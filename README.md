@@ -10,8 +10,9 @@ The strongest chess engine I can fit in 4,096 bytes of Python, built for the
 `main.py` is the whole engine: a 0x88 alpha-beta searcher with PVS, a
 transposition table, null-move pruning, killer and history move ordering,
 MVV-LVA capture ordering, quiescence over captures and promotions (and every
-reply to a check), and a material + piece-square + passed-pawn + king-shield
-evaluation. It searches to a fixed node budget per move, never a clock, so
+reply to a check), and a PeSTO tapered evaluation (middlegame/endgame tables
+interpolated by material phase) plus a passed-pawn bonus and a king pawn-shield
+term. It searches to a fixed node budget per move, never a clock, so
 every trial replays move for move.
 
 It plays the house gauntlet through the env at `MAKEFUN_ENV_URL`:
